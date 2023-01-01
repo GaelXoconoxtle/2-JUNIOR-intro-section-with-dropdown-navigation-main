@@ -11,13 +11,20 @@
 }
 
 html {
-  font-size: 100%;
+  font-size: u.rem(18);
   box-sizing: border-box;
-  color-scheme: dark light;
+  // color-scheme: dark light;
+  font-family: 'Epilogue', sans-serif;
+  font-weight: 500;
 }
 
 body {
   min-height: 100vh;
+  background-color: u.$almost-white;
+  
+  @include u.breakpoint-up(large) {
+    padding: u.rem(26) u.rem(36);
+  }
 }
 
 ul {
@@ -42,6 +49,102 @@ table {
 td, th {
   padding: 0;
 }
+
+.hidden-for-mobile {
+  @include u.breakpoint-down(large) {
+    display: none;
+  }
+}
+
+.hidden-for-desktop {
+  @include u.breakpoint-up(large) {
+    display: none;
+  }
+}
+
+
+// NAV ICONS
+
+.todoList {
+  padding-left: u.rem(28);
+  margin-top: 3px;
+
+  &::before {
+    // content: url("/images/icon-todo.svg");
+    
+    content: "";
+    background-image: url("/images/icon-todo.svg");
+    width: u.rem(15);
+    height: u.rem(17);
+    
+    @include u.breakpoint-up(large) {
+      width: u.rem(14);
+      height: u.rem(16);
+    }
+  }
+}
+
+.calendar {
+  padding-left: u.rem(28);
+
+  &::before {
+    // content: url("/images/icon-calendar.svg");
+
+    content: "";
+    background-image: url("/images/icon-calendar.svg");
+    width: u.rem(17);
+    height: u.rem(20);
+    
+    @include u.breakpoint-up(large) {
+      width: u.rem(16);
+      height: u.rem(19);
+    }
+  }
+}
+
+.reminders {
+  padding-left: u.rem(28);
+
+  &::before {
+    // content: url("/images/icon-reminders.svg");
+
+    content: "";
+    background-image: url("/images/icon-reminders.svg");
+    width: u.rem(14);
+    height: u.rem(18);
+    left: u.rem(2) !important;
+    
+    @include u.breakpoint-up(large) {
+      width: u.rem(13);
+      height: u.rem(17);
+    }
+  }
+}
+
+.planning {
+  padding-left: u.rem(28);
+
+  &::before {
+    // content: url("/images/icon-planning.svg");
+
+    content: "";
+    background-image: url("/images/icon-planning.svg");
+    width: u.rem(17);
+    height: u.rem(17);
+    
+    @include u.breakpoint-up(large) {
+      width: u.rem(16);
+      height: u.rem(16);
+    }
+  }
+}
+
+
+.show {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 
 .sr-only {
   position: absolute;

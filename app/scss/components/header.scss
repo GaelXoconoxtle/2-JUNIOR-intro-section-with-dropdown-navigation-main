@@ -1,0 +1,317 @@
+@use '../util/' as u;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: u.rem(13);
+  
+  @include u.breakpoint-down(large) {
+    padding: u.rem(16) u.rem(12);
+    position: fixed;
+    top: 0;
+    background-color: u.$almost-white;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    
+    .logo {
+      display: inline-block;
+      margin-right: u.rem(54);
+      cursor: pointer;
+    }
+
+  }
+
+  &__navigation {
+    display: flex;
+
+    a {
+      color: u.$medium-gray;
+
+      &:hover {
+        color: u.$almost-black;
+      }
+    }
+
+    .a2:not(:last-child) {
+      margin-right: u.rem(32);
+    }
+
+    .container {
+      margin-right: u.rem(32);
+      
+      .btn {
+        display: flex;
+        align-items: center;
+
+        color: u.$medium-gray;
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        position: relative;
+
+        &:hover {
+          color: u.$almost-black;
+          
+          .icon-arrow-down {
+            background-image: url(/images/icon-arrow-down-2.svg);
+          }
+        }
+        
+        &[aria-expanded = "true"] {
+          color: u.$almost-black;
+        }
+
+        .icon-arrow-down {
+          width: u.rem(10);
+          height: u.rem(6);
+          background-repeat: no-repeat;
+          background-image: url(/images/icon-arrow-down.svg);
+          margin-left: u.rem(6);
+          
+          &[aria-expanded = "true"] {
+            background-image: url(/images/icon-arrow-up-black.svg);
+          }
+        }
+      }
+
+      .dropdown {
+        background-color: u.$almost-white;
+        padding: u.rem(20);
+        border-radius: u.rem(10);
+        margin-top: u.rem(16);
+        box-shadow: 0 10px 40px 0px rgba(0,0,0,0.15);
+        position: absolute;
+
+        visibility: hidden;
+        opacity: 0;
+        
+        &__1 {
+          left: u.rem(104);
+        }
+
+        &__2 {
+          
+          .a {
+            padding: 0;
+          }
+        }
+
+        a {
+          display: flex;
+          padding-left: u.rem(26);
+          position: relative;
+
+          &:not(:last-child) {
+            margin-bottom: u.rem(16);
+          }
+
+          &::before {
+            background-repeat: no-repeat;
+            position: absolute;
+            top: u.rem(-2);
+            left: 0px;
+            background-size: contain;
+            display: inline-block;
+          }
+
+          &:hover {
+            color: u.$almost-black;
+          }
+        }
+      }
+    }
+  }
+
+  &__right {
+    
+    a {
+      color: u.$medium-gray;
+      margin-right: u.rem(28);
+
+      &:hover {
+        color: u.$almost-black;
+      }
+    }
+
+    button {
+      color: u.$medium-gray;
+      border: 1px solid u.$medium-gray;
+      background: none;
+      padding: u.rem(10) u.rem(18);
+      border-radius: u.rem(14);
+      cursor: pointer;
+      
+      &:hover {
+        border: 1px solid u.$almost-black;
+        color: u.$almost-black;
+      }
+    }
+  }
+
+
+  &__hamburguerMenu {
+    // display: none;
+
+    &-btn {
+      background-image: url("/images/icon-menu.svg");
+      background-repeat: no-repeat;
+      height: 18px;
+      width: 32px;
+      position: absolute;
+      z-index: 999;
+      top: u.rem(18);
+      right: u.rem(16);
+      cursor: pointer;
+    }
+    
+    &-navigation {
+      position: fixed;
+      background-color: u.$almost-white;
+      padding: u.rem(70) u.rem(20);
+      height: 100vh;
+      width: 66%;
+      max-width: u.rem(320);
+      top: 0;
+      right: 0;
+      color: u.$medium-gray;
+
+      transform: translateX(100%);
+      transition: transform 150ms ease-in-out;
+      
+      a {
+        color: u.$medium-gray;
+      }
+    }
+
+    &-container {
+      position: relative;
+
+      &[aria-expanded = "true"] {
+
+        .header__hamburguerMenu-label {
+          
+          &::after {
+            content: url("/images/icon-arrow-up.svg");
+          }
+        }
+
+        .header__hamburguerMenu-content {
+          max-height: u.rem(150);
+        }
+      }
+    }
+
+    &-label {
+      position: relative;
+      margin-bottom: u.rem(22);
+      cursor: pointer;
+
+      &::after {
+        content: url("/images/icon-arrow-down.svg");
+        margin-left: u.rem(10);
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      margin-left: u.rem(16);
+      max-height: 0;
+
+      overflow: hidden;
+      transition: 300ms ease-in-out;
+
+      a {
+        position: relative;
+
+        &:last-child {
+          margin-bottom: u.rem(22);
+        }
+
+        &::before {
+          background-repeat: no-repeat;
+          position: absolute;
+          top: u.rem(-2);
+          left: 0px;
+          background-size: contain;
+          display: inline-block;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: u.rem(18);
+        }
+      }
+    }
+
+    &-a {
+      display: block;
+
+      &:not(:last-of-type) {
+        margin-bottom: u.rem(22);
+      }
+
+      &:last-of-type {
+        margin-bottom: u.rem(34);
+      }
+    }
+
+    &-loginSection {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        color: u.$medium-gray;
+        cursor: pointer;
+        background: none;
+        padding: u.rem(10) 0;
+        border: none;
+        
+        &:last-child {
+          border: 1px solid u.$medium-gray;
+          border-radius: u.rem(12);
+          margin-top: u.rem(6);
+        }
+      }
+    }
+
+    .overlay {
+      visibility: hidden;
+      opacity: 0;
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background-color: rgb(0, 0, 0);
+
+      transition: 600ms ease-in-out;
+    }
+  }
+
+
+  &__hamburguerMenu[menu-open = "true"] {
+
+    .overlay {
+      visibility: visible;
+      opacity: 0.5;
+    }
+
+    .header__hamburguerMenu-btn {
+      background-image: url("/images/icon-close-menu.svg");
+      height: 26px;
+      width: 26px;
+      top: u.rem(16);
+    }
+
+    .header__hamburguerMenu-navigation {
+      transform: translateX(0%);
+    }
+
+  }
+}

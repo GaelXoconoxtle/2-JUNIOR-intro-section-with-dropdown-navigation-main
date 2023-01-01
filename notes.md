@@ -1,18 +1,22 @@
 # Functional Requirements and Notes
 
-Light/Dark mode toggle -- takes system pref by default, but can override with toggle
+How to create a dropdown menu:
+https://www.freecodecamp.org/news/how-to-build-a-dropdown-menu-with-javascript/
+https://codepen.io/evavic44/pen/eYKQJjJ
 
-What HTML markup (accesible) -- https://github.com/scottaohara/a11y_styled_form_controls
+How to create the effect accordion to use the mobile:
+https://www.freecodecamp.org/news/build-an-accordion-menu-using-html-css-and-javascript/
+  
+  Use overflow:hidden and position:relative on the content that´s going to appear.
 
-Use fieldset, legend, radio inputs
+  Hide this same element using height: 0 and add an 'active' class to the container of the section.
 
-Switching between light/dark modes via JS and Prefers-color-scheme media query -- https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme
+    The 'active' class will have 
+      .accordion .container.active .content {
+        height: 150px;
+      }
 
-Three option toggle: light/dark/system pref -- https://codepen.io/renddrew/full/bRomab
 
-CSS Variables (Custom properties) -- https://css-tricks.com/updating-a-css-variable-with-javascript/
 
-Accesibility
 
-- Use correct heading tags
-- Screenreader-only text for card titles/username -- https://www.accessibility-developer-guide.com/examples/hiding-elements/visually/
+
